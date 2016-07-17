@@ -1,0 +1,15 @@
+body {
+  background-color: #25264D;
+}
+
+#example-two {
+  height: 0;
+  width: 40%;
+  justify-content: center;
+  border-radius: 50%;
+  padding-bottom: 40%;
+  border: 3px solid #FA9737;
+  margin: auto;
+/*   max-width:90%; */
+  margin-top: 2em;
+}
