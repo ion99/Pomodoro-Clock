@@ -24,8 +24,14 @@ body {
   float: left;
   width: 100%;
   padding-top: 50%;
-  margin-top: -0.5em;
+  margin-top: -1.3em;
   text-align: center;
   color: #ADACAA;
   font-size: 10vw;
+  margin-left: 1vw;
+}
+
+.session {
+  font-size: 5vw;
+  color: #DED7D1;
 }
