@@ -3,9 +3,9 @@ body {
 }
 
 #circle {
-  width: 40vw;
+  width: 21vw;
   margin: auto;
-  margin-top: 2em;
+/*   margin-top: 1em; */
 }
 
 #circle::after {
@@ -24,14 +24,39 @@ body {
   float: left;
   width: 100%;
   padding-top: 50%;
-  margin-top: -1.3em;
+  margin-top: -1.6em;
   text-align: center;
   color: #ADACAA;
-  font-size: 10vw;
-  margin-left: 1vw;
+  font-size: 5vw;
+/*   margin-left: 1vw; */
+/*   margin: 0; */
 }
 
 .session {
-  font-size: 5vw;
+  font-size: 3vw;
   color: #DED7D1;
+/*   margin-lelt: 1vw;  */
 }
+
+.head {
+  font-family: monaco,Consolas,Lucida Console,monospace;
+  color: #F7F5F2;
+}
+
+.ghost {
+/*   background-color: transparent; */
+  border: 3.5px solid #FA9737;
+}
+
+#length {
+  display: inline-block;
+/*   margin: 0 px; */
+  color: #ADACAA;
+  font-size: 1.5em;
+}
+
+#resume, #stop { 
+  display: none; 
+}
+
+
