@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $("#circle1").hide();
   var minutes = 25;
   var isPaused = false;
   var timerId = 0;
