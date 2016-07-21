@@ -44,6 +44,12 @@ $(document).ready(function(){
     display = $('#time');
     startTimer(minute, display);
   }
+  function startBreak(min){
+
+    var minute = 60 * min,
+    display = $('#time1');
+    startTimer(minute, display);
+  }
 
   // Event listeners
 
