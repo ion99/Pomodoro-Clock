@@ -25,6 +25,9 @@ $(document).ready(function(){
               $("#stop").hide();
               $("#resume").hide();
               clearInterval(timerId);
+              $("#circle").hide();
+              $("#circle1").show();
+              startTimer(5, display);
           }
 
         }
