@@ -1,4 +1,14 @@
 $(document).ready(function(){
+
+$(function() {
+  
+  var clock = new Clock();
+  clock.displayCurrentTime();
+  clock.displaySessionTime();
+  clock.displayBreakTime();
+  clock.displaySessionCount();  });
+
+
   $("#circle1").hide();
   var minutes = 25;
   var isPaused = false;
