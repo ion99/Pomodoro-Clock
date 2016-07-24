@@ -120,6 +120,17 @@ $(function() {
     clearInterval(timerId);
     $("#time").text(minutes + ":00");
 
+     this.reset = function() {
+      clearInterval(timer);
+      active = false;
+      type = "Session";
+      currentTime = sessionTime;
+      sessionCount = 0;
+      $('.time-start').text('Start');
+      this.displayCurrentTime();
+      this.displaySessionTime();
+      this.displaySessionCount();
+    }
 
   });
 })
