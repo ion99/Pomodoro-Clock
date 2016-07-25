@@ -8,6 +8,26 @@ $(function() {
   clock.displayBreakTime();
   clock.displaySessionCount();  });
 
+// add event listeners 
+  $(".time-session .minus").click(function() {
+    clock.changeSessionTime("subtract");
+  });
+  $(".time-session .plus").click(function() {
+    clock.changeSessionTime("add");
+  });
+  $(".time-break .minus").click(function() {
+    clock.changeBreakTime("subtract");
+  });
+  $(".time-break .plus").click(function() {
+    clock.changeBreakTime("add");
+  });
+  $(".time-start").click(function() {
+    clock.toggleClock();
+  });
+  $(".time-reset").click(function() {
+    clock.reset();
+  });
+
 
   $("#circle1").hide();
   var minutes = 25;
