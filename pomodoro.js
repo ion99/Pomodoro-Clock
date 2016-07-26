@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 $(function() {
   
-  var clock = new Clock();
+  let clock = new Clock();
   clock.displayCurrentTime();
   clock.displaySessionTime();
   clock.displayBreakTime();
@@ -30,13 +30,13 @@ $(function() {
 
 
   $("#circle1").hide();
-  var minutes = 25;
-  var isPaused = false;
-  var timerId = 0;
+  let minutes = 25;
+  let isPaused = false;
+  let timerId = 0;
 
   $("#length").text(minutes);
   function startTimer(duration, display) {
-      var timer = duration, minutes, seconds;
+      let timer = duration, minutes, seconds;
       console.log("timer", timer);
       timerId = setInterval(function () {
 
@@ -70,13 +70,13 @@ $(function() {
 
   function startPomodoro(min){
 
-    var minute = 60 * min,
+    let minute = 60 * min,
     display = $('#time');
     startTimer(minute, display);
   }
   function startBreak(min){
 
-    var minute = 60 * min,
+    let minute = 60 * min,
     display = $('#time1');
     startTimer(minute, display);
   }
