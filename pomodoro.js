@@ -129,6 +129,30 @@ $(function() {
 
   });
 
+
+   this.stepDown = function() {
+      if (currentTime > 0) {
+        currentTime --;
+        this.displayCurrentTime();
+        if (currentTime === 0) {
+          if (type === "Session") {
+            currentTime = breakTime;
+            startTime = breakTime;
+            type = "Break";
+            this.displaySessionCount();
+            endAudio.play();
+          } else {
+            sessionCount ++;
+            currentTime = sessionTime;
+            startTime = sessionTime;
+            type = "Session";
+            this.displaySessionCount();
+            startAudio.play();
+          }
+        }
+      }
+    }
+
   //Reset button
   $("#reset").on("click", function(){
     $("#minus, #plus").attr("disabled", false);
