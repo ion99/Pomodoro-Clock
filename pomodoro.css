@@ -89,4 +89,12 @@ body {
   display: none; 
 }
 
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #FA9737;
+  text-align: center;
+}
 
