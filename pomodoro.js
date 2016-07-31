@@ -1,42 +1,16 @@
-$(document).ready(function(){
+//var Promise = require("bluebird");
 
-$(function() {
+//$(document).ready(function(){
   
-  let clock = new Clock();
-  clock.displayCurrentTime();
-  clock.displaySessionTime();
-  clock.displayBreakTime();
-  clock.displaySessionCount();  });
-
-// add event listeners 
-  $(".time-session .minus").click(function() {
-    clock.changeSessionTime("subtract");
-  });
-  $(".time-session .plus").click(function() {
-    clock.changeSessionTime("add");
-  });
-  $(".time-break .minus").click(function() {
-    clock.changeBreakTime("subtract");
-  });
-  $(".time-break .plus").click(function() {
-    clock.changeBreakTime("add");
-  });
-  $(".time-start").click(function() {
-    clock.toggleClock();
-  });
-  $(".time-reset").click(function() {
-    clock.reset();
-  });
-
-
   $("#circle1").hide();
-  let minutes = 25;
-  let isPaused = false;
-  let timerId = 0;
+  var minutes = 25;
+  //var breakMin = 5;
+  var isPaused = false;
+  var timerId = 0;
 
   $("#length").text(minutes);
   function startTimer(duration, display) {
-      let timer = duration, minutes, seconds;
+      var timer = duration, minutes, seconds;
       console.log("timer", timer);
       timerId = setInterval(function () {
 
@@ -52,12 +26,15 @@ $(function() {
           console.log(timer);
           if (timer < 0) {
               timer = duration;
-              $("#stop").hide();
-              $("#resume").hide();
+              //$("#stop").hide();
+              //$("#resume").hide();
               clearInterval(timerId);
               $("#circle").hide();
               $("#circle1").show();
-              startTimer(5, display);
+              startBreak(5);
+              
+              
+            
           }
 
         }
@@ -70,13 +47,14 @@ $(function() {
 
   function startPomodoro(min){
 
-    let minute = 60 * min,
+    var minute = 60 * min,
     display = $('#time');
     startTimer(minute, display);
   }
-  function startBreak(min){
+  
+   function startBreak(min){
 
-    let minute = 60 * min,
+    var minute = 60 * min,
     display = $('#time1');
     startTimer(minute, display);
   }
@@ -111,7 +89,7 @@ $(function() {
     isPaused = false;
     startPomodoro(minutes);
     $("#stop").show();
-
+    startBreak(breakMin);
   });
 
   //Stop button
@@ -129,30 +107,6 @@ $(function() {
 
   });
 
-
-   this.stepDown = function() {
-      if (currentTime > 0) {
-        currentTime --;
-        this.displayCurrentTime();
-        if (currentTime === 0) {
-          if (type === "Session") {
-            currentTime = breakTime;
-            startTime = breakTime;
-            type = "Break";
-            this.displaySessionCount();
-            endAudio.play();
-          } else {
-            sessionCount ++;
-            currentTime = sessionTime;
-            startTime = sessionTime;
-            type = "Session";
-            this.displaySessionCount();
-            startAudio.play();
-          }
-        }
-      }
-    }
-
   //Reset button
   $("#reset").on("click", function(){
     $("#minus, #plus").attr("disabled", false);
@@ -164,17 +118,7 @@ $(function() {
     clearInterval(timerId);
     $("#time").text(minutes + ":00");
 
-     this.reset = function() {
-      clearInterval(timer);
-      active = false;
-      type = "Session";
-      currentTime = sessionTime;
-      sessionCount = 0;
-      $('.time-start').text('Start');
-      this.displayCurrentTime();
-      this.displaySessionTime();
-      this.displaySessionCount();
-    }
 
   });
-})
+//})
+
