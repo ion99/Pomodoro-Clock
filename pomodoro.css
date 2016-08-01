@@ -1,5 +1,7 @@
-body {
+html, body {
   background-color: #25264D;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 #circle {
@@ -32,36 +34,6 @@ body {
 /*   margin: 0; */
 }
 
-#circle1 {
-  width: 21vw;
-  margin: auto;
-/*   margin-top: 1em; */
-}
-
-#circle1::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%;
-  border: 5px solid #FA9737; 
-  -moz-border-radius: 50%; 
-  -webkit-border-radius: 50%; 
-  border-radius: 50%;
-}
-
-#circle1 div {
-  float: left;
-  width: 100%;
-  padding-top: 50%;
-  margin-top: -1.6em;
-  text-align: center;
-  color: #ADACAA;
-  font-size: 5vw;
-/*   margin-left: 1vw; */
-/*   margin: 0; */
-}
-
 .session {
   font-size: 3vw;
   color: #DED7D1;
@@ -74,11 +46,11 @@ body {
 }
 
 .ghost {
-/*   background-color: transparent; */
+  background-color: transparent;
   border: 3.5px solid #FA9737;
 }
 
-#length {
+#length, #length1 {
   display: inline-block;
 /*   margin: 0 px; */
   color: #ADACAA;
@@ -87,6 +59,10 @@ body {
 
 #resume, #stop { 
   display: none; 
+}
+
+button {
+  color: #ADACAA;
 }
 
 .footer {
