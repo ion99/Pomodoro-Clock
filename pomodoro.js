@@ -1,15 +1,13 @@
-//var Promise = require("bluebird");
 
-//$(document).ready(function(){
-  
-  $("#circle1").hide();
   var minutes = 25;
-  //var breakMin = 5;
+  
+  var breakMin = 5;
   var isPaused = false;
   var timerId = 0;
 
   $("#length").text(minutes);
   function startTimer(duration, display) {
+      //var session = true;
       var timer = duration, minutes, seconds;
       console.log("timer", timer);
       timerId = setInterval(function () {
@@ -26,22 +24,16 @@
           console.log(timer);
           if (timer < 0) {
               timer = duration;
+              $(".session").text("Break:");
+              startPomodoro(breakMin);
               //$("#stop").hide();
               //$("#resume").hide();
-              clearInterval(timerId);
-              $("#circle").hide();
-              $("#circle1").show();
-              startBreak(5);
-              
-              
-            
+              //clearInterval(timerId);
           }
 
         }
 
       }, 1000);
-    console.log("id", timerId);
-
   }
 
 
@@ -49,13 +41,6 @@
 
     var minute = 60 * min,
     display = $('#time');
-    startTimer(minute, display);
-  }
-  
-   function startBreak(min){
-
-    var minute = 60 * min,
-    display = $('#time1');
     startTimer(minute, display);
   }
 
@@ -72,8 +57,9 @@
 
   });
 
+
   $("#plus").on("click", function(){
-    if( minutes < 45){
+    if( minutes < 60){
       minutes += 1;
       $("#length").text(minutes);
       $("#time").text(minutes + ":00");
@@ -81,15 +67,35 @@
 
   });
 
+  
+  $("#minus1").on("click", function(){
+    if(breakMin > 1){
+      breakMin -= 1;
+      $("#length1").text(breakMin);
+      $("#time1").text(breakMin + ":00");
+    }
+
+  });
+
+
+  $("#plus1").on("click", function(){
+    if(breakMin < 60){
+      breakMin += 1;
+      $("#length1").text(breakMin);
+      $("#time1").text(breakMin + ":00");
+    }
+
+  });
+
   // Start button
   $("#start").on("click", function(){
-    $("#minus, #plus").attr("disabled", true);
+    $("#minus, #plus, #minus1, #plus1").attr("disabled", true);
 
     $(this).hide();
     isPaused = false;
     startPomodoro(minutes);
     $("#stop").show();
-    startBreak(breakMin);
+    //startBreak(breakMin);
   });
 
   //Stop button
@@ -109,16 +115,16 @@
 
   //Reset button
   $("#reset").on("click", function(){
-    $("#minus, #plus").attr("disabled", false);
+    $("#minus, #plus, #minus1, #plus1").attr("disabled", false);
 
 
     $("#stop").hide();
     $("#resume").hide();
     $("#start").show();
     clearInterval(timerId);
+    $(".session").text("Session:");
     $("#time").text(minutes + ":00");
 
 
   });
-//})
 
