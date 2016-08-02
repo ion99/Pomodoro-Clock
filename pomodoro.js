@@ -1,14 +1,14 @@
 
-  var minutes = 25;
+  let minutes = 25;
   
-  var breakMin = 5;
-  var isPaused = false;
-  var timerId = 0;
+  let breakMin = 5;
+  let isPaused = false;
+  let timerId = 0;
 
   $("#length").text(minutes);
   function startTimer(duration, display) {
-      //var session = true;
-      var timer = duration, minutes, seconds;
+      //let session = true;
+      let timer = duration, minutes, seconds;
       console.log("timer", timer);
       timerId = setInterval(function () {
 
@@ -39,7 +39,7 @@
 
   function startPomodoro(min){
 
-    var minute = 60 * min,
+    let minute = 60 * min,
     display = $('#time');
     startTimer(minute, display);
   }
