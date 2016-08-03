@@ -5,7 +5,8 @@
   let isPaused = false;
   let timerId = 0;
 
-  $("#length").text(minutes);
+  $("#time").text(minutes + ":00");
+  
   function startTimer(duration, display) {
       //let session = true;
       let timer = duration, minutes, seconds;
