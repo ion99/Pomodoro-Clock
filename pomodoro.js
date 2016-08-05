@@ -1,4 +1,14 @@
 
+  $(document).ready(function() { 
+    let clockRunning = false;
+    let timeLeft;
+    let sessionTime = 1500;
+    let breakTime = 300;
+    let breakClock = false;
+    let seconds = sessionTime;
+  })
+
+
   let minutes = 25;
   
   let breakMin = 5;
