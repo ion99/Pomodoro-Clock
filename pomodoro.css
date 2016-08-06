@@ -1,7 +1,11 @@
-html, body {
+html {
   background-color: #25264D;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+.text-center {
+  background-color: #25264D;
 }
 
 #circle {
@@ -37,8 +41,12 @@ html, body {
 }
 
 .head {
-  font-family: monaco,Consolas,Lucida Console,monospace;
+  font-family: monaco, Consolas, Lucida Console,monospace;
   color: #F7F5F2;
+}
+
+.head1 {
+  color: #ADACAA;
 }
 
 .ghost {
@@ -72,6 +80,6 @@ button {
    text-align: center;
 }
 
-.plus-minus {
+#plus-minus {
   border: 3px solid #FA9737;
 }

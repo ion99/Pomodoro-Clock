@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pomodoro_Clock</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Pomodoro_Clock</title>
     <link rel="stylesheet" type="text/css" href="pomodoro.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js"></script>
     <script type="text/babel" src="pomodoro.js"></script>
     <script type="text/javascript" src="pomodoro.js"></script>
@@ -27,11 +29,11 @@
         <div class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">
           <h6 class="text-center head">SessionTime</h6>
             <div class="row text-center">
-              <button class="btn btn-xs btn-danger plus-minus" data-method="sub-sess">
+              <button  id="plus-minus" class="btn btn-xs btn-danger plus-minus" data-method="sub-sess">
                 <i class="glyphicon glyphicon-minus" data-method="sub-sess"></i>
               </button>
               <span id="sessionLength"></span>
-              <button class="btn btn-xs btn-info plus-minus" data-method="add-sess">
+              <button  id="plus-minus" class="btn btn-xs btn-info plus-minus" data-method="add-sess">
                 <i class="glyphicon glyphicon-plus" data-method="add-sess"></i>
               </button>
             </div>
@@ -39,11 +41,11 @@
         <div class="col-sm-3  col-xs-3">
           <h6 class="text-center head">BreakTime</h6>
             <div class="row text-center">
-              <button class="btn btn-xs btn-danger plus-minus" data-method="sub-break">
+              <button  id="plus-minus" class="btn btn-xs btn-danger plus-minus" data-method="sub-break">
                 <i class="glyphicon glyphicon-minus" data-method="sub-break"></i>
               </button>
               <span id="breakLength"></span>
-              <button class="btn btn-xs btn-info plus-minus" data-method="add-break">
+              <button  id="plus-minus" class="btn btn-xs btn-info plus-minus" data-method="add-break">
                 <i class="glyphicon glyphicon-plus" data-method="add-break"></i>
               </button>
             </div>
@@ -51,16 +53,16 @@
         </div>
       <div class="text-center">
         <h5 class="head">Controls</h5>
-          <button id="start" class="btn-sm ghost">
-            <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Start
+          <button id="start" class="btn-sm ghost head1">
+            <span class="glyphicon glyphicon-play-circle head" aria-hidden="true"></span> Start
           </button>
-          <button id="resume" class="btn-sm ghost">
-            <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Resume
+          <button id="resume" class="btn-sm ghost head1">
+            <span class="glyphicon glyphicon-play head" aria-hidden="true"></span> Resume
           </button>
-          <button id="stop" class="btn-sm ghost">
-            <span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</button>
-          <button id="reset" class="btn-sm ghost">
-            <span class="glyphicon glyphicon-refresh time-reset" aria-hidden="true"></span> Reset
+          <button id="stop" class="btn-sm ghost head1">
+            <span class="glyphicon glyphicon-pause head" aria-hidden="true"></span> Pause</button>
+          <button id="reset" class="btn-sm ghost head1">
+            <span class="glyphicon glyphicon-refresh head" aria-hidden="true"></span> Reset
           </button>
         </div>
       </div>

@@ -24,7 +24,7 @@ $(document).ready(function() {
       return min + ":" + sec;
     }
   }
-  
+
   function timer() {
     if(seconds > 0) {
       seconds-- ;
