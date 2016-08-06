@@ -1,141 +1,112 @@
-
-  $(document).ready(function() { 
-    let clockRunning = false;
-    let timeLeft;
-    let sessionTime = 1500;
-    let breakTime = 300;
-    let breakClock = false;
-    let seconds = sessionTime;
-  })
-
-
-  let minutes = 25;
+$(document).ready(function() { 
+  let timeRunning = false;
+  let timeLeft;
+  let sessionTime = 1500;
+  let breakTime = 300;
+  let breakClock = false;
+  let seconds = sessionTime;
   
-  let breakMin = 5;
-  let isPaused = false;
-  let timerId = 0;
-
-  $("#time").text(minutes + ":00");
-  
-  function startTimer(duration, display) {
-      //let session = true;
-      let timer = duration, minutes, seconds;
-      console.log("timer", timer);
-      timerId = setInterval(function () {
-
-        if(!isPaused){
-          minutes = parseInt(timer / 60);
-          seconds = parseInt(timer % 60);
-
-          minutes = minutes < 10 ? "0" + minutes : minutes;
-          seconds = seconds < 10 ? "0" + seconds : seconds;
-
-          display.text(minutes + ":" + seconds);
-          timer--;
-          console.log(timer);
-          if (timer < 0) {
-              timer = duration;
-              $(".session").text("Break:");
-              startPomodoro(breakMin);
-              //$("#stop").hide();
-              //$("#resume").hide();
-              //clearInterval(timerId);
-          }
-
-        }
-
-      }, 1000);
+  function play(){
+    let audio = document.getElementById("audio");
+    audio.play();
   }
-
-
-  function startPomodoro(min){
-
-    let minute = 60 * min,
-    display = $('#time');
-    startTimer(minute, display);
+  //Converts seconds to MM:SS
+  function filterTime(seconds) {
+    let min = Math.floor(seconds / 60);
+    let sec = seconds % 60;
+    if(sec < 10) {
+      return min + ":0" + sec;
+    } else {
+      return min + ":" + sec;
+    }
   }
-
-  // Event listeners
-
-  // Session length actions
-
-  $("#minus").on("click", function(){
-    if(minutes > 1){
-      minutes -= 1;
-      $("#length").text(minutes);
-      $("#time").text(minutes + ":00");
+  //renders the background fill effect with different colors for session, break, and pause
+  // function renderBackground() {
+  //   let color = '#444'
+  //   let timer = breakClock?breakTime:sessionTime;
+  //   if(timeRunning) {
+  //     color = breakClock?'#166':'#464';
+  //   }
+  //   let progress = (timer - seconds)*100/timer;
+  //   $('#stopWatch').css('background', 'linear-gradient(to top, '+color+' 0%,'+color+' '+progress+'%,#222 '+progress+'%,#222 100%)');
+  // }
+  //counts down till seconds = 0, then plays alarm and switches between session and break mode.
+  function timer() {
+    if(seconds > 0) {
+      seconds-- ;
+      if(seconds === 0) {
+        //document.getElementById('alarm').play();
+        play();
+      }
+    } else {
+      if(!breakClock) {
+        seconds = breakTime;
+        $('.session').html("Break:");
+        breakClock = true;
+      } else {
+        seconds = sessionTime;
+        $('.session').html("Session:");
+        breakClock = false;
+      }
     }
-
-  });
-
-
-  $("#plus").on("click", function(){
-    if( minutes < 60){
-      minutes += 1;
-      $("#length").text(minutes);
-      $("#time").text(minutes + ":00");
-    }
-
-  });
-
-  
-  $("#minus1").on("click", function(){
-    if(breakMin > 1){
-      breakMin -= 1;
-      $("#length1").text(breakMin);
-      $("#time1").text(breakMin + ":00");
-    }
-
-  });
+    //renderBackground()
+    $('#time').html(filterTime(seconds));
+  }
+  //Initial page render
+  $('#time').html(filterTime(seconds));
+  $('#sessionLength').html(Math.floor(seconds / 60));
+  $('#breakLength').html(Math.floor(breakTime / 60));
 
 
-  $("#plus1").on("click", function(){
-    if(breakMin < 60){
-      breakMin += 1;
-      $("#length1").text(breakMin);
-      $("#time1").text(breakMin + ":00");
-    }
-
-  });
-
-  // Start button
-  $("#start").on("click", function(){
-    $("#minus, #plus, #minus1, #plus1").attr("disabled", true);
-
-    $(this).hide();
-    isPaused = false;
-    startPomodoro(minutes);
-    $("#stop").show();
-    //startBreak(breakMin);
-  });
-
-  //Stop button
-  $("#stop").on("click", function(){
-    $(this).hide();
-    $("#resume").show();
-    isPaused = !isPaused;
-  });
-
-  //Resume button
-  $("#resume").on("click", function(){
+  //add play/pause functionality to the stopwatch button
+  $('#start, #resume').click(function() {
+    //play();
+    $(".fa").attr("disabled", "true");
     $(this).hide();
     $("#stop").show();
-    isPaused = !isPaused;
-
+    $("#stop").on("click", function(){
+      $(this).hide();
+      $("#resume").show();
+      clearInterval(timeLeft);
+      timeRunning = false;
+    });
+    
+    if(!timeRunning) {
+      timeLeft = setInterval(function() {timer()}, 1000);
+      timeRunning = true;
+    } else {
+      clearInterval(timeLeft);
+      timeRunning = false;
+    }
   });
 
-  //Reset button
-  $("#reset").on("click", function(){
-    $("#minus, #plus, #minus1, #plus1").attr("disabled", false);
-
-
+  //reset button brings app back to session mode at full time.
+  $('#reset').click(function() {
     $("#stop").hide();
     $("#resume").hide();
     $("#start").show();
-    clearInterval(timerId);
-    $(".session").text("Session:");
-    $("#time").text(minutes + ":00");
+    seconds = sessionTime;
+    $('.session').html("Session:");
+    $('#time').html(filterTime(seconds));
+    breakClock = false;
+    clearInterval(timeLeft);
+    timeRunning = false;
+  });
 
+  $(".time-select").click(function(e){
+    let method = e.target.getAttribute("data-method");
+    switch(method) {
+      case "add-sess": sessionTime += 60; break;
+      case "sub-sess": sessionTime = sessionTime <= 60 ? 0 :sessionTime - 60;  break;
+      case "add-break": breakTime += 60; break;
+      case "sub-break": breakTime = breakTime <= 60 ? 0 : breakTime - 60; break;
+    }
+    //sets seconds to the appropriate value
+    seconds = breakClock ? breakTime : sessionTime;
+    $('#time').html(filterTime(seconds));
+    $('#sessionLength').html(Math.floor(sessionTime/60));
+    $('#breakLength').html(Math.floor(breakTime/60));
 
   });
 
+});
