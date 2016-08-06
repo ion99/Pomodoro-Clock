@@ -7,7 +7,6 @@ html, body {
 #circle {
   width: 21vw;
   margin: auto;
-/*   margin-top: 1em; */
 }
 
 #circle::after {
@@ -30,14 +29,11 @@ html, body {
   text-align: center;
   color: #ADACAA;
   font-size: 5vw;
-/*   margin-left: 1vw; */
-/*   margin: 0; */
 }
 
 .session {
   font-size: 3vw;
   color: #DED7D1;
-/*   margin-lelt: 1vw;  */
 }
 
 .head {
@@ -50,9 +46,8 @@ html, body {
   border: 3.5px solid #FA9737;
 }
 
-#length, #length1 {
+#sessionLength, #breakLength {
   display: inline-block;
-/*   margin: 0 px; */
   color: #ADACAA;
   font-size: 1.5em;
 }
@@ -66,11 +61,17 @@ button {
 }
 
 .footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #FA9737;
-  text-align: center;
+   position: fixed;
+   left: 0px;
+   bottom: 0px;
+   height: 17px;
+   width: 100%;
+   background-color: #DE751F;
+   color: white;
+   margin: auto;
+   text-align: center;
 }
 
+.time-select {
+  border: 3px solid #FA9737;
+}
