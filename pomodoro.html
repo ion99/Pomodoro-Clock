@@ -13,7 +13,7 @@
   <body>
     <div class="text-center">
     <h3 class="text-center head">Pomodoro Clock</h3>
-    <div id="circle">
+    <div id="circle" class="main-display">
       <div>
         <span class="session">Session:</span>
         <br>
@@ -23,42 +23,49 @@
     <div class="row text-center">
       <div class="row">
         <div class="col-sm-3 col-sm-offset-3 col-xs-3 col-xs-offset-3">
-    <h6 class="text-center head">SessionTime</h6>
-    <div class="row text-center">
-        <button id="minus" type="button" class="btn-xs ghost"><span  class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-        </button>
-    <span id="length">25</span>
-      <button id="plus" type="button" class="btn-xs ghost"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-      </button>
-    </div>
+          <h6 class="text-center head">SessionTime</h6>
+            <div class="row text-center time-session">
+              <button class="btn btn-xs btn-danger time-select" data-method="sub-sess">
+                <i class="glyphicon glyphicon-minus" data-method="sub-sess"></i>
+              </button>
+              <span id="sessionLength"></span>
+              <button class="btn btn-xs btn-info time-select" data-method="add-sess">
+                <i class="glyphicon glyphicon-plus" data-method="add-sess"></i>
+              </button>
+            </div>
+          </div>
+        <div class="col-sm-3  col-xs-3  time-break">
+          <h6 class="text-center head">BreakTime</h6>
+            <div class="row text-center">
+              <button class="btn btn-xs btn-danger time-select" data-method="sub-break">
+                <i class="glyphicon glyphicon-minus" data-method="sub-break"></i>
+              </button>
+              <span id="breakLength"></span>
+              <button class="btn btn-xs btn-info time-select" data-method="add-break">
+                <i class="glyphicon glyphicon-plus" data-method="add-break"></i>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-3  col-xs-3">
-    <h6 class="text-center head">BreakTime</h6>
-    <div class="row text-center">
-        <button id="minus1" type="button" class="btn-xs ghost"><span  class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-        </button>
-    <span id="length1">5</span>
-      <button id="plus1" type="button" class="btn-xs ghost"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-      </button>
-    </div>
-        </div>
-    </div>
-      <div id="clock" class="text-center">
-          <h5 class="head">Controls</h5>
-          <button id="start" type="button" class="btn-sm ghost green">
+      <div class="text-center">
+        <h5 class="head">Controls</h5>
+          <button id="start" class="btn-sm ghost green time-start">
             <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Start
           </button>
-          <button id="resume" type="button" class="btn-sm ghost green">
+            <audio id="audio" src="https://jpk-image-hosting.s3.amazonaws.com/pomodoro-app/audio/end.mp3" ></audio>
+          <button id="resume" class="btn-sm ghost green">
             <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Resume
           </button>
-          <button id="stop" type="button" class="btn-sm ghost green"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</button>
-
-          <button id="reset" type="button" class="btn-sm ghost green">
-            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Reset
+          <button id="stop" class="btn-sm ghost">
+            <span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause</button>
+          <button id="reset" class="btn-sm ghost">
+            <span class="glyphicon glyphicon-refresh time-reset" aria-hidden="true"></span> Reset
           </button>
-
         </div>
-    </div>
-    <div class="footer">Ion Gorincioi © 2016. All Rights Reserved :)</div>
+      </div>
+      <br>
+      <br>
+    <footer class="footer">Ion Gorincioi © 2016. All Rights Reserved :)</footer>
   </body>
+</html>
 </html>
